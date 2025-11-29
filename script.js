@@ -7,16 +7,21 @@ const setStatus = (message, tone = 'note') => {
   newsletterStatus.className = `form-note ${tone}`.trim();
 };
 
-const postToGoogleSheet = async (endpoint, payload) => {
+// Use FormData instead of JSON
+const postToGoogleSheet = async (endpoint, formElement) => {
+  const formData = new FormData(formElement);
+
   const response = await fetch(endpoint, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
+    body: formData, // no headers; browser sets correct boundary
   });
 
   if (!response.ok) {
     throw new Error(`Failed to send signup. Status: ${response.status}`);
   }
+
+  // If you return JSON from Apps Script, you *could* read it:
+  // const data = await response.json();
 };
 
 if (newsletterForm) {
@@ -31,24 +36,32 @@ if (newsletterForm) {
     }
 
     if (!endpoint) {
-      setStatus('Missing sign-up destination. Please try again later or email hello@theallergenie.com.', 'error');
+      setStatus(
+        'Missing sign-up destination. Please try again later or email hello@theallergenie.com.',
+        'error'
+      );
       return;
     }
 
-    setStatus('Granting your wish and sending it to our private Google Sheet...', 'pending');
+    setStatus(
+      'Granting your wish and sending it to our private Google Sheet...',
+      'pending'
+    );
 
     try {
-      await postToGoogleSheet(endpoint, {
-        email,
-        timestamp: new Date().toISOString(),
-        source: 'theallergenie.com/newsletter'
-      });
+      await postToGoogleSheet(endpoint, newsletterForm);
 
-      setStatus(`Wish granted! ${email} is on our list for weekly sparks from The Allergenie.`, 'success');
+      setStatus(
+        `Wish granted! ${email} is on our list for weekly sparks from The Allergenie.`,
+        'success'
+      );
       newsletterForm.reset();
     } catch (error) {
       console.error('Newsletter signup error', error);
-      setStatus('We could not save your wish right now. Please try again or email hello@theallergenie.com.', 'error');
+      setStatus(
+        'We could not save your wish right now. Please try again or email hello@theallergenie.com.',
+        'error'
+      );
     }
   });
 }
