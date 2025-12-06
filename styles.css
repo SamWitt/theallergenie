@@ -168,6 +168,16 @@ a {
   gap: 2rem;
   align-items: center;
   margin-top: 1.5rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .hero-content {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+  }
 }
 
 .hero-text .eyebrow {
@@ -248,15 +258,17 @@ a {
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 100%;
 }
 
 .label-splash {
   position: relative;
   width: 100%;
-  max-width: 520px;
+  max-width: none;
   aspect-ratio: 1 / 1;
   display: grid;
   place-items: center;
+  min-height: clamp(280px, 45vw, 620px);
 }
 
 .label-ring {
@@ -284,10 +296,11 @@ a {
 
 .label-core {
   position: relative;
-  width: 75%;
+  width: 90%;
+  max-width: none;
   background: var(--card);
   border-radius: 30px;
-  padding: 1.25rem 1.25rem 1.75rem;
+  padding: clamp(1.25rem, 4vw, 2rem);
   text-align: center;
   color: var(--ink);
   box-shadow: 0 20px 60px rgba(48, 21, 8, 0.1);
@@ -303,6 +316,33 @@ a {
   font-size: 0.9rem;
   color: #6b3e1a;
   font-weight: 700;
+}
+
+.label-image {
+  width: 100%;
+  max-width: clamp(260px, 32vw, 520px);
+  display: block;
+  margin: 0 auto 0.5rem;
+}
+
+@media (min-width: 900px) {
+  .hero-card {
+    align-self: stretch;
+    justify-self: stretch;
+  }
+
+  .label-splash {
+    max-width: none;
+    height: 100%;
+  }
+
+  .label-core {
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    display: grid;
+    place-items: center;
+  }
 }
 
 .label-image {
