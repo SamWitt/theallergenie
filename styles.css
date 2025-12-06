@@ -164,7 +164,7 @@ a {
 
 .hero-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1fr;
   gap: 2rem;
   align-items: center;
   margin-top: 1.5rem;
@@ -246,11 +246,14 @@ a {
 .hero-card {
   display: flex;
   justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .label-splash {
   position: relative;
-  width: min(420px, 100%);
+  width: 100%;
+  max-width: 520px;
   aspect-ratio: 1 / 1;
   display: grid;
   place-items: center;
