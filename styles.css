@@ -173,13 +173,6 @@ a {
   margin-right: auto;
 }
 
-@media (min-width: 768px) {
-  .hero-content {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    align-items: center;
-  }
-}
-
 .hero-text .eyebrow {
   color: var(--crimson);
   font-weight: 700;
