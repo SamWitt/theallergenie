@@ -345,6 +345,13 @@ a {
   }
 }
 
+.label-image {
+  width: 100%;
+  max-width: 200px;
+  display: block;
+  margin: 0 auto 0.5rem;
+}
+
 .section {
   padding: clamp(2.5rem, 8vw, 4.5rem) clamp(1.25rem, 4vw, 3rem);
 }
