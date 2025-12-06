@@ -253,18 +253,18 @@ a {
   box-shadow: inset 0 0 0 1px rgba(192, 16, 16, 0.18);
 }
 
-.hero-card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.hero-heart {
+  display: grid;
+  place-items: center;
   width: 100%;
   height: 100%;
+  justify-self: center;
 }
 
 .label-splash {
   position: relative;
   width: 100%;
-  max-width: none;
+  max-width: clamp(240px, 36vw, 520px);
   aspect-ratio: 1 / 1;
   display: grid;
   place-items: center;
@@ -294,16 +294,13 @@ a {
   animation-delay: -4s;
 }
 
-.label-core {
+.heart-mark {
   position: relative;
-  width: 90%;
-  max-width: none;
-  background: var(--card);
-  border-radius: 30px;
-  padding: clamp(1.25rem, 4vw, 2rem);
-  text-align: center;
-  color: var(--ink);
-  box-shadow: 0 20px 60px rgba(48, 21, 8, 0.1);
+  display: grid;
+  place-items: center;
+  width: clamp(200px, 30vw, 420px);
+  height: clamp(200px, 30vw, 420px);
+  border-radius: 50%;
 }
 
 .label-domain {
@@ -326,30 +323,16 @@ a {
 }
 
 @media (min-width: 900px) {
-  .hero-card {
-    align-self: stretch;
-    justify-self: stretch;
-  }
-
   .label-splash {
     max-width: none;
     height: 100%;
   }
-
-  .label-core {
-    width: 100%;
-    margin: 0 auto;
-    height: 100%;
-    display: grid;
-    place-items: center;
-  }
 }
 
-.label-image {
-  width: 100%;
-  max-width: 200px;
-  display: block;
-  margin: 0 auto 0.5rem;
+@media (min-width: 768px) {
+  .hero-heart {
+    justify-self: end;
+  }
 }
 
 .section {
