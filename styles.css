@@ -312,27 +312,6 @@ a {
   margin: 0 auto 0.5rem;
 }
 
-@media (min-width: 900px) {
-  .hero-content {
-    grid-template-columns: 1fr 1fr;
-    align-items: stretch;
-  }
-
-  .hero-card {
-    align-self: stretch;
-  }
-
-  .label-splash {
-    max-width: none;
-  }
-
-  .label-core {
-    width: 70%;
-    max-width: 560px;
-    margin: 0 auto;
-  }
-}
-
 .section {
   padding: clamp(2.5rem, 8vw, 4.5rem) clamp(1.25rem, 4vw, 3rem);
 }
